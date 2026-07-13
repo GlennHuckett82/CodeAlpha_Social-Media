@@ -337,6 +337,7 @@ textarea {
   top: 0;
   z-index: 100;
   background: rgba(0, 0, 0, 0.85);
+  -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
   padding: var(--space-3) 0;

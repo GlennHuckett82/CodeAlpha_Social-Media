@@ -9,7 +9,7 @@ A full-stack social media platform built with **Express.js**, **MongoDB**, and *
 ## Tech Stack
 
 | Layer | Technology |
-|---|---|
+| --- | --- |
 | **Frontend** | Vanilla JS ES modules · CSS3 custom properties · HTML5 |
 | **Backend** | Node.js 20 · Express 4 · Mongoose 8 · express-validator |
 | **Database** | MongoDB 8 (local dev) · mongodb-memory-server (tests) |
@@ -22,7 +22,7 @@ A full-stack social media platform built with **Express.js**, **MongoDB**, and *
 ## Prerequisites
 
 | Requirement | Version | Notes |
-|---|---|---|
+| --- | --- | --- |
 | Node.js | 20+ | `node --version` to confirm |
 | npm | 9+ | bundled with Node 20 |
 | MongoDB | 8+ | must be running locally for dev |
@@ -70,7 +70,7 @@ The test suite uses `mongodb-memory-server` — no real MongoDB required.
 ## Environment Variables
 
 | Variable | Required | Default | Description |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | `PORT` | No | `3001` | Express server port |
 | `NODE_ENV` | No | `development` | `development` / `production` / `test` |
 | `MONGO_URI` | Yes | — | MongoDB connection string |
@@ -82,7 +82,7 @@ The test suite uses `mongodb-memory-server` — no real MongoDB required.
 ## API Overview
 
 | Method | Endpoint | Auth | Description |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | `POST` | `/api/auth/register` | — | Register new user |
 | `POST` | `/api/auth/login` | — | Login, returns JWT |
 | `GET` | `/api/posts` | — | Paginated feed (`?page&limit`) |
