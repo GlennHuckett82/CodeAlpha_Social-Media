@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign Up — Alpha Chat</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="auth-page">
+  <main class="auth-card" role="main">
+    <h1 class="auth-card__title">Alpha Chat</h1>
+    <p class="auth-card__subtitle">Create your account</p>
+
+    <div
+      id="error-message"
+      class="error-message"
+      role="alert"
+      aria-live="polite"
+      hidden
+    ></div>
+
+    <form id="register-form" novalidate>
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          autocomplete="username"
+          required
+          minlength="3"
+          maxlength="30"
+          aria-describedby="username-hint error-message"
+        />
+        <span id="username-hint" class="field-hint">
+          3–30 characters: letters, numbers, underscores only
+        </span>
+      </div>
+
+      <div class="form-group">
+        <label for="displayName">
+          Display name
+          <span class="field-optional">(optional)</span>
+        </label>
+        <input
+          type="text"
+          id="displayName"
+          name="displayName"
+          autocomplete="name"
+          maxlength="50"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email address</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          autocomplete="email"
+          required
+          aria-describedby="error-message"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          autocomplete="new-password"
+          required
+          minlength="6"
+          aria-describedby="password-hint error-message"
+        />
+        <span id="password-hint" class="field-hint">Minimum 6 characters</span>
+      </div>
+
+      <button type="submit" id="submit-btn" class="btn btn-primary btn-full">
+        Create Account
+      </button>
+    </form>
+
+    <p class="auth-card__footer">
+      Already have an account?
+      <a href="login.html">Sign in</a>
+    </p>
+  </main>
+
+  <script type="module" src="js/register.js"></script>
+</body>
+</html>

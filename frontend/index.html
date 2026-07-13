@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Feed — Alpha Chat</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <span class="site-header__brand">Alpha Chat</span>
+      <nav id="header-user" aria-label="User navigation"></nav>
+    </div>
+  </header>
+
+  <main class="container" id="main-content">
+
+    <!-- Compose post -->
+    <section class="feed-compose" aria-label="Create a post">
+      <form id="compose-form" novalidate>
+        <div class="form-group">
+          <label for="compose-content" class="sr-only">What's on your mind?</label>
+          <textarea
+            id="compose-content"
+            name="content"
+            class="compose-textarea"
+            placeholder="What's on your mind?"
+            maxlength="500"
+            rows="3"
+            aria-describedby="char-counter"
+            required
+          ></textarea>
+          <span id="char-counter" class="char-counter" aria-live="polite" aria-atomic="true">0 / 500</span>
+        </div>
+        <div class="form-group">
+          <label for="compose-image" class="sr-only">Image URL (optional)</label>
+          <input
+            type="url"
+            id="compose-image"
+            name="imageUrl"
+            placeholder="Image URL (optional)"
+          />
+        </div>
+        <div class="compose-actions">
+          <button type="submit" id="post-submit-btn" class="btn btn-primary">Post</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Feed error -->
+    <div id="feed-error" class="error-message" role="alert" aria-live="polite" hidden></div>
+
+    <!-- Posts -->
+    <ul id="post-feed" class="post-feed" aria-label="Posts feed"></ul>
+
+    <p id="feed-empty" class="feed-empty" hidden>No posts yet. Follow some people or create the first post!</p>
+
+    <div class="load-more-wrap">
+      <button id="load-more-btn" class="btn btn-secondary">Load more</button>
+    </div>
+
+  </main>
+
+  <!-- ── Post card template ── -->
+  <template id="post-card-template">
+    <li class="post-card">
+      <img class="avatar avatar--md post-card__avatar" src="" alt="" />
+      <div class="post-card__body">
+        <div class="post-card__header">
+          <a href="#" class="post-card__profile-link post-card__display-name"></a>
+          <span class="post-card__username"></span>
+          <span class="post-card__separator" aria-hidden="true">·</span>
+          <time class="post-card__time"></time>
+          <button
+            type="button"
+            class="post-card__action-btn post-card__delete-btn"
+            aria-label="Delete post"
+            hidden
+          >🗑</button>
+        </div>
+        <p class="post-card__content"></p>
+        <img class="post-card__image" src="" alt="Post image" hidden />
+        <div class="post-card__actions">
+          <button type="button" class="post-card__action-btn post-card__like-btn" aria-pressed="false">
+            <span class="like-icon" aria-hidden="true">♡</span>
+            <span class="like-count">0</span>
+            <span class="sr-only">likes</span>
+          </button>
+          <button type="button" class="post-card__action-btn post-card__comment-btn">
+            <span aria-hidden="true">💬</span>
+            <span class="comment-count">0</span>
+            <span class="sr-only">comments</span>
+          </button>
+        </div>
+        <!-- Comments section (toggled) -->
+        <div class="post-card__comments" hidden>
+          <ul class="comment-list" aria-label="Comments"></ul>
+          <form class="comment-form" aria-label="Add a comment">
+            <textarea
+              class="comment-input"
+              placeholder="Add a comment…"
+              maxlength="280"
+              rows="2"
+              aria-label="Comment text"
+              required
+            ></textarea>
+            <button type="submit" class="btn btn-primary btn-sm">Reply</button>
+          </form>
+        </div>
+      </div>
+    </li>
+  </template>
+
+  <script type="module" src="js/header.js"></script>
+  <script type="module" src="js/feed.js"></script>
+</body>
+</html>

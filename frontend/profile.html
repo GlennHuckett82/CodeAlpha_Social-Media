@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profile — Alpha Chat</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="site-header__brand">Alpha Chat</a>
+      <nav id="header-user" aria-label="User navigation"></nav>
+    </div>
+  </header>
+
+  <main class="container" id="main-content">
+
+    <!-- Profile header -->
+    <section class="profile-header" id="profile-header" aria-label="Profile">
+
+      <div class="profile-header__top">
+        <img
+          id="profile-avatar"
+          class="avatar avatar--lg"
+          src=""
+          alt="Profile avatar"
+        />
+        <div class="profile-header__actions" id="profile-actions"></div>
+      </div>
+
+      <div class="profile-info">
+        <h1 class="profile-display-name" id="profile-display-name"></h1>
+        <p class="profile-username"  id="profile-username"></p>
+        <p class="profile-bio"       id="profile-bio"></p>
+
+        <div class="profile-stats" id="profile-stats" aria-label="Profile statistics">
+          <span class="profile-stats__item">
+            <strong id="stat-posts">0</strong> Posts
+          </span>
+          <span class="profile-stats__item">
+            <strong id="stat-followers">0</strong> Followers
+          </span>
+          <span class="profile-stats__item">
+            <strong id="stat-following">0</strong> Following
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Inline edit form (own profile, hidden by default) -->
+    <section id="edit-profile-section" class="edit-profile" hidden aria-label="Edit profile">
+      <form id="edit-profile-form" novalidate>
+        <div id="edit-error" class="error-message" role="alert" aria-live="polite" hidden></div>
+
+        <div class="form-group">
+          <label for="edit-display-name">Display name</label>
+          <input type="text" id="edit-display-name" name="displayName" maxlength="50" />
+        </div>
+
+        <div class="form-group">
+          <label for="edit-bio">Bio <span class="field-optional">(max 160 chars)</span></label>
+          <textarea id="edit-bio" name="bio" maxlength="160" rows="3"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="edit-avatar-url">Avatar URL <span class="field-optional">(optional)</span></label>
+          <input type="url" id="edit-avatar-url" name="avatarUrl" placeholder="https://…" />
+        </div>
+
+        <div class="edit-profile__actions">
+          <button type="submit" id="save-profile-btn" class="btn btn-primary">Save</button>
+          <button type="button" id="cancel-edit-btn" class="btn btn-secondary">Cancel</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Page-level error (e.g. user not found) -->
+    <div id="profile-error" class="error-message" role="alert" aria-live="polite" hidden></div>
+
+    <!-- Posts -->
+    <ul id="profile-posts" class="post-feed" aria-label="User posts"></ul>
+    <p id="profile-posts-empty" class="feed-empty" hidden>No posts yet.</p>
+
+    <div class="load-more-wrap">
+      <button id="load-more-btn" class="btn btn-secondary" hidden>Load more</button>
+    </div>
+
+  </main>
+
+  <!-- ── Post card template (same structure as feed) ── -->
+  <template id="post-card-template">
+    <li class="post-card">
+      <img class="avatar avatar--md post-card__avatar" src="" alt="" />
+      <div class="post-card__body">
+        <div class="post-card__header">
+          <a href="#" class="post-card__profile-link post-card__display-name"></a>
+          <span class="post-card__username"></span>
+          <span class="post-card__separator" aria-hidden="true">·</span>
+          <time class="post-card__time"></time>
+          <button
+            type="button"
+            class="post-card__action-btn post-card__delete-btn"
+            aria-label="Delete post"
+            hidden
+          >🗑</button>
+        </div>
+        <p class="post-card__content"></p>
+        <img class="post-card__image" src="" alt="Post image" hidden />
+        <div class="post-card__actions">
+          <button type="button" class="post-card__action-btn post-card__like-btn" aria-pressed="false">
+            <span class="like-icon" aria-hidden="true">♡</span>
+            <span class="like-count">0</span>
+            <span class="sr-only">likes</span>
+          </button>
+          <button type="button" class="post-card__action-btn post-card__comment-btn">
+            <span aria-hidden="true">💬</span>
+            <span class="comment-count">0</span>
+            <span class="sr-only">comments</span>
+          </button>
+        </div>
+        <div class="post-card__comments" hidden>
+          <ul class="comment-list" aria-label="Comments"></ul>
+          <form class="comment-form" aria-label="Add a comment">
+            <textarea
+              class="comment-input"
+              placeholder="Add a comment…"
+              maxlength="280"
+              rows="2"
+              aria-label="Comment text"
+              required
+            ></textarea>
+            <button type="submit" class="btn btn-primary btn-sm">Reply</button>
+          </form>
+        </div>
+      </div>
+    </li>
+  </template>
+
+  <script type="module" src="js/header.js"></script>
+  <script type="module" src="js/profile.js"></script>
+</body>
+</html>
